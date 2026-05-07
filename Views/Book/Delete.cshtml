@@ -1,0 +1,53 @@
+@model KutuphaneYonetimSistemi.Models.Book
+
+@{
+    ViewData["Title"] = "Kitap Sil";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card mt-4 border-danger shadow-sm">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0"><i class="fa-solid fa-trash me-2"></i> Kitap Sil</h4>
+            </div>
+            <div class="card-body">
+                <h5 class="text-danger mb-4">Bu kitabı silmek istediğinizden emin misiniz?</h5>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <dl class="row">
+                            <dt class="col-sm-5 text-muted">@Html.DisplayNameFor(model => model.BookName)</dt>
+                            <dd class="col-sm-7 fw-bold">@Html.DisplayFor(model => model.BookName)</dd>
+
+                            <dt class="col-sm-5 text-muted">@Html.DisplayNameFor(model => model.AuthorId)</dt>
+                            <dd class="col-sm-7">@Model.Author.AuthorName @Model.Author.AuthorSurname</dd>
+
+                            <dt class="col-sm-5 text-muted">@Html.DisplayNameFor(model => model.CategoryId)</dt>
+                            <dd class="col-sm-7"><span class="badge bg-secondary">@Model.Category.CategoryName</span></dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="row">
+                            <dt class="col-sm-5 text-muted">@Html.DisplayNameFor(model => model.PageCount)</dt>
+                            <dd class="col-sm-7">@Html.DisplayFor(model => model.PageCount)</dd>
+
+                            <dt class="col-sm-5 text-muted">@Html.DisplayNameFor(model => model.PublishYear)</dt>
+                            <dd class="col-sm-7">@Html.DisplayFor(model => model.PublishYear)</dd>
+
+                            <dt class="col-sm-5 text-muted">@Html.DisplayNameFor(model => model.Stock)</dt>
+                            <dd class="col-sm-7">@Html.DisplayFor(model => model.Stock)</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="BookId" />
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary"><i class="fa-solid fa-arrow-left me-1"></i> İptal ve Listeye Dön</a>
+                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash me-1"></i> Evet, Sil</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

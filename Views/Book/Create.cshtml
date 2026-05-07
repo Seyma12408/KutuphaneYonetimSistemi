@@ -1,0 +1,72 @@
+@model KutuphaneYonetimSistemi.Models.Book
+
+@{
+    ViewData["Title"] = "Yeni Kitap Ekle";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card mt-4 shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fa-solid fa-plus me-2"></i> Yeni Kitap Ekle</h4>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label asp-for="BookName" class="form-label fw-bold"></label>
+                            <input asp-for="BookName" class="form-control" placeholder="Kitap adını giriniz..." />
+                            <span asp-validation-for="BookName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="AuthorId" class="form-label fw-bold"></label>
+                            <select asp-for="AuthorId" class="form-select" asp-items="ViewBag.Authors">
+                                <option value="">-- Yazar Seçiniz --</option>
+                            </select>
+                            <span asp-validation-for="AuthorId" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="CategoryId" class="form-label fw-bold"></label>
+                            <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories">
+                                <option value="">-- Kategori Seçiniz --</option>
+                            </select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label asp-for="PageCount" class="form-label fw-bold"></label>
+                            <input asp-for="PageCount" class="form-control" type="number" />
+                            <span asp-validation-for="PageCount" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="PublishYear" class="form-label fw-bold"></label>
+                            <input asp-for="PublishYear" class="form-control" type="number" />
+                            <span asp-validation-for="PublishYear" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="Stock" class="form-label fw-bold"></label>
+                            <input asp-for="Stock" class="form-control" type="number" />
+                            <span asp-validation-for="Stock" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a asp-action="Index" class="btn btn-secondary"><i class="fa-solid fa-arrow-left me-1"></i> Listeye Dön</a>
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save me-1"></i> Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

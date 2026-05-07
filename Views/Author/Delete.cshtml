@@ -1,0 +1,42 @@
+@model KutuphaneYonetimSistemi.Models.Author
+
+@{
+    ViewData["Title"] = "Yazar Sil";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card mt-4 border-danger">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0"><i class="fa-solid fa-trash me-2"></i> Yazar Sil</h4>
+            </div>
+            <div class="card-body">
+                <h5 class="text-danger mb-4">Bu yazarı silmek istediğinizden emin misiniz?</h5>
+                
+                <dl class="row">
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.AuthorName)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.AuthorName)</dd>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.AuthorSurname)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.AuthorSurname)</dd>
+
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.BirthDate)</dt>
+                    <dd class="col-sm-8">@Model.BirthDate.ToShortDateString()</dd>
+                </dl>
+                
+                <div class="alert alert-warning">
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i> 
+                    <strong>Dikkat:</strong> Bu yazarı silerseniz, yazara ait olan tüm kitaplar da sistemden silinecektir!
+                </div>
+
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="AuthorId" />
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary"><i class="fa-solid fa-arrow-left me-1"></i> İptal ve Listeye Dön</a>
+                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash me-1"></i> Evet, Sil</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

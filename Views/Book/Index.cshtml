@@ -1,0 +1,73 @@
+@model IEnumerable<KutuphaneYonetimSistemi.Models.Book>
+
+@{
+    ViewData["Title"] = "Kitaplar";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+    <h2><i class="fa-solid fa-book me-2"></i> Kitaplar</h2>
+    <a asp-action="Create" class="btn btn-primary"><i class="fa-solid fa-plus me-1"></i> Yeni Kitap Ekle</a>
+</div>
+
+<!-- Arama Sistemi -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-body bg-light">
+        <form asp-action="Index" method="get" class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="searchString" class="col-form-label fw-bold"><i class="fa-solid fa-magnifying-glass me-1"></i> Kitap veya Yazar Ara:</label>
+            </div>
+            <div class="col-md-6 col-12">
+                <input type="text" name="searchString" id="searchString" class="form-control" placeholder="Kitap adı, yazar adı veya soyadı..." value="@Context.Request.Query["searchString"]" />
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-dark">Ara</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">Temizle</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0 table-responsive">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.BookName)</th>
+                    <th>@Html.DisplayNameFor(model => model.AuthorId)</th>
+                    <th>@Html.DisplayNameFor(model => model.CategoryId)</th>
+                    <th>@Html.DisplayNameFor(model => model.PublishYear)</th>
+                    <th>@Html.DisplayNameFor(model => model.Stock)</th>
+                    <th class="text-end" style="min-width:250px;">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(!Model.Any()) {
+                    <tr><td colspan="6" class="text-center text-muted py-4">Kayıtlı kitap bulunamadı.</td></tr>
+                }
+                @foreach (var item in Model) {
+                    <tr>
+                        <td class="fw-bold">@Html.DisplayFor(modelItem => item.BookName)</td>
+                        <td>@item.Author.AuthorName @item.Author.AuthorSurname</td>
+                        <td><span class="badge bg-secondary">@item.Category.CategoryName</span></td>
+                        <td>@Html.DisplayFor(modelItem => item.PublishYear)</td>
+                        <td>
+                            @if(item.Stock > 0)
+                            {
+                                <span class="badge bg-success rounded-pill">@item.Stock Adet</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger rounded-pill">Tükendi</span>
+                            }
+                        </td>
+                        <td class="text-end">
+                            <a asp-action="Details" asp-route-id="@item.BookId" class="btn btn-sm btn-info text-white"><i class="fa-solid fa-circle-info"></i> Detay</a>
+                            <a asp-action="Edit" asp-route-id="@item.BookId" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen-to-square"></i> Düzenle</a>
+                            <a asp-action="Delete" asp-route-id="@item.BookId" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i> Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
