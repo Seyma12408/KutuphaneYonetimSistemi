@@ -62,8 +62,12 @@ Projeyi yerel bilgisayarınızda çalıştırmak için şu adımları izleyebili
 
 ## 📸 Ekran Görüntüleri
 
-*(Buraya uygulamanın ekran görüntülerini ekleyebilirsiniz)*
+<img width="1897" height="870" alt="Ekran görüntüsü 2026-05-09 162601" src="https://github.com/user-attachments/assets/c38c60cb-3786-403e-ac74-22a279b54726" />
+<img width="1914" height="855" alt="Ekran görüntüsü 2026-05-09 162647" src="https://github.com/user-attachments/assets/f723ad6e-b31e-46b6-8cfe-c10acba847a1" />
+<img width="1913" height="839" alt="Ekran görüntüsü 2026-05-09 162711" src="https://github.com/user-attachments/assets/4c1d30fa-4487-46b5-a24d-78ad53ff9f9f" />
+<img width="1915" height="842" alt="Ekran görüntüsü 2026-05-09 162739" src="https://github.com/user-attachments/assets/99def7f3-3529-4f2d-9dbb-b516cc7df4e1" />
+
 
 ---
 
-Bu proje, **Şeyma** tarafından eğitim ve portfolyo amaçlı geliştirilmiştir. Geliştirme sürecinde temiz kod prensipleri ve MVC mimarisi temel alınmıştır.
+
